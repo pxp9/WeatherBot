@@ -25,7 +25,14 @@ https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
 ## Run CMD
 
-To run in command line just call: *python main.py*
+You will need to create 2 enviroment variables in linux is in this file */etc/environment*
+
+- TELEGRAM_BOT_TOKEN=TOKEN OF THE BOT
+- OPEN_WEATHER_MAP_API_TOKEN=TOKEN OF THE API:
+
+Maybe you need to reboot and then
+
+Run in command line : *python main.py*
 
 ## 3rd Party Documentations
 
