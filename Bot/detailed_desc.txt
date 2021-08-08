@@ -1,0 +1,21 @@
+
+humo
+lluvia y nieve
+lluvia ligera
+lluvia moderada
+algo de nubes
+cielo claro
+nubes dispersas
+muy nuboso
+nubes
+
+smoke
+rain and snow
+light rain
+moderate rain
+few clouds
+clear sky
+scattered clouds
+broken clouds
+overcast clouds
+
