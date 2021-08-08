@@ -4,9 +4,11 @@
 This bot gives you weather info about any city in the world !
 
 You have three commands to do:
-/weather_city
-/help
-/start
+
+
+- /weather_city
+- /help
+- /start
 
 you can especify a country like this:
 
