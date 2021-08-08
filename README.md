@@ -31,6 +31,6 @@ To run in command line just call: *python main.py*
 - Python telegram bot API: https://pypi.org/project/python-telegram-bot/
 - Schedule library: https://pypi.org/project/schedule/
 
-##Future functions
+## Future functions
 
 The bot will send a daily message of weather info if user activate the option
