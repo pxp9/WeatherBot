@@ -34,7 +34,7 @@ https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 You will need to create 2 enviroment variables in linux is in this file */etc/environment*
 
 - TELEGRAM_BOT_TOKEN=TOKEN OF THE BOT
-- OPEN_WEATHER_MAP_API_TOKEN=TOKEN OF THE API:
+- OPEN_WEATHER_MAP_API_TOKEN=TOKEN OF THE API
 
 Maybe you need to reboot and then
 
