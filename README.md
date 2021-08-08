@@ -1,7 +1,4 @@
 
-[![license][npm-license]][npm-license-url]
-[npm-license]: https://img.shields.io/npm/l/@stencil/core.svg
-
 # WeatherBot
 
 This bot gives you weather info about any city in the world !
@@ -35,4 +32,5 @@ To run in command line just call: *python main.py*
 - Schedule library: https://pypi.org/project/schedule/
 
 ##Future functions
+
 The bot will send a daily message of weather info if user activate the option
