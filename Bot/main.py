@@ -43,7 +43,6 @@ default_city="Cercedilla"
 city_selected=""
 
 
-
 def weather(update: Update , context: CallbackContext):
     query = update.callback_query
     query.answer()
@@ -82,9 +81,10 @@ logger = logging.getLogger(__name__)
 def start(update: Update, context: CallbackContext) -> None:
     """Send a message when the command /start is issued."""
     user = update.effective_user
-
+    username = user.username
+    chat_id = user.id
     if(default_LANG == ENGLISH_LANG):
-        user.bot.send_message(chat_id=update._effective_chat.id,
+        user.bot.send_message(chat_id=chat_id,
             text=fr'Hi {user.mention_html()} !'+' This bot 🤖🤖 gives you weather information for any city in the world!\n\n '+'<b>do</b> /help <b>in order to learn how to use it</b>',
             reply_markup= InlineKeyboardMarkup([
                 [InlineKeyboardButton(text=u'🏛🏛'+" default_city_weather "+u'🏛🏛' , callback_data="dcw")],
@@ -94,7 +94,7 @@ def start(update: Update, context: CallbackContext) -> None:
             parse_mode=ParseMode.HTML
         )
     elif(default_LANG == SPANISH_LANG):
-        user.bot.send_message(chat_id=update._effective_chat.id,
+        user.bot.send_message(chat_id=chat_id,
             text=fr'Hola {user.mention_html()} !'+u' Este bot 🤖🤖 provee información del tiempo para cualquier ciudad a nivel mundial!\n\n '+'<b>escribe</b> /help <b>para aprender a usarlo</b>',
             reply_markup= InlineKeyboardMarkup([ 
                 [InlineKeyboardButton(text=u'🏛🏛'+" tiempo_ciudad_predeterminada "+u'🏛🏛' , callback_data="dcw")] ,
@@ -233,7 +233,7 @@ def main() -> None:
         fallbacks=[]
     ))
 
-
+    
     
     # Start the Bot
     updater.start_polling()
@@ -241,7 +241,21 @@ def main() -> None:
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    updater.idle()
+    schedule.every().day.at("20:04").do(job)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+def job():
+
+    info = weather_handler.get_weather(globals()['default_city'])
+
+    
+
+
+
+    
 
 
 if __name__ == '__main__':
