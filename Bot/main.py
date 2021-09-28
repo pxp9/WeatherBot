@@ -137,7 +137,6 @@ def input_city(update: Update , context: CallbackContext):
         globals()['city_selected'] = text
     else:
         globals()['city_selected'] = default_city
-    print(globals()['city_selected'] +" "+update.effective_user.full_name +" "+ update.effective_user.username)
 
     # if(default_LANG == SPANISH_LANG):
     #     update.message.reply_text("Escribe el acrónimo del país por favor ")
