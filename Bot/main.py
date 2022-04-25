@@ -12,14 +12,11 @@ Basic Weather Bot, retrieve weather information.
 Press Ctrl-C on the command line or send a signal to the process to stop the
 bot.
 """
-import schedule
 import time
 import logging
 import os
 import weather_handler
-import time_handler
 from telegram import Update, InlineKeyboardButton,InlineKeyboardMarkup , ParseMode
-
 import telegram.constants as tc
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext , ConversationHandler , CallbackQueryHandler
 
@@ -240,21 +237,7 @@ def main() -> None:
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.
-    schedule.every().day.at("20:04").do(job)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
-def job():
-
-    info = weather_handler.get_weather(globals()['default_city'])
-
-    
-
-
-
-    
+    updater.idle()
 
 
 if __name__ == '__main__':

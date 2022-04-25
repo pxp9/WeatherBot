@@ -1,6 +1,7 @@
 # importing library
 from pyowm.owm import OWM  
 from pyowm.utils.config import get_default_config
+import telegram
 import main
 import os
 
