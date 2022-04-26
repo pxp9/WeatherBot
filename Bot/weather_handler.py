@@ -91,7 +91,8 @@ def get_weather(city_str):
             "muy nuboso":u'☁️☁️☁️☁️',
             "broken clouds":u'☁️☁️☁️☁️',
             "nubes":u'🌥',
-            "overcast clouds":u'🌥'
+            "overcast clouds":u'🌥' , 
+            "tormenta con lluvia":u'⛈ '
             }
    status_text= str(weather.detailed_status)
    if(status_text == "rain and snow" and main.default_LANG == main.SPANISH_LANG):
