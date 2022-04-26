@@ -43,7 +43,7 @@ city_selected=""
 def weather(update: Update , context: CallbackContext):
     query = update.callback_query
     query.answer()
-    information = weather_handler.get_weather(globals()['default_city'])
+    information = weather_handler.get_weather(globals()['default_city'] , default_LANG)
     query.message.chat.send_action(action=tc.CHATACTION_TYPING)
     query.message.reply_text(information)
     start(update , context)
@@ -51,14 +51,14 @@ def weather(update: Update , context: CallbackContext):
 def change_language_to_spanish(update: Update , context: CallbackContext):
     query= update.callback_query
     query.answer()
-    globals()['default_LANG']= SPANISH_LANG
+    globals()['default_LANG'] = SPANISH_LANG
     query.message.reply_text("Idioma cambiado a español "+u'🇪🇸🇪🇸🇪🇸')
     start(update , context)
 
 def change_language_to_english(update: Update , context: CallbackContext):
     query= update.callback_query
     query.answer()
-    globals()['default_LANG']= ENGLISH_LANG
+    globals()['default_LANG'] = ENGLISH_LANG
     query.message.reply_text("Language changed to English "+u'🇺🇸🇺🇸')
     start(update , context)
 
@@ -144,7 +144,7 @@ def input_city(update: Update , context: CallbackContext):
 
     # if you want to try weather with countries comment this 3 lines below and quit the comment for the other lines commented
     update.message.chat.send_action(action=tc.CHATACTION_TYPING)
-    info = weather_handler.get_weather(globals()['city_selected'])
+    info = weather_handler.get_weather(globals()['city_selected'] , default_LANG)
     update.message.reply_text(info)
     start(update , context)
     return ConversationHandler.END

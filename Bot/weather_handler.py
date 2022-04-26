@@ -12,7 +12,7 @@ owm = OWM(os.environ['OPEN_WEATHER_MAP_API_TOKEN'])
 
 """ FUNCTION TO GET WEATHER INFO AS A STRING THROW OPEN WEATHER MAP API """
 
-def get_weather(city_str):
+def get_weather(city_str , default_LANG):
 
    city_text=""
    hour_text=""
@@ -21,8 +21,7 @@ def get_weather(city_str):
    weather_status_text=""
    wind_speed_text=""
    precipitation_text=""
-
-   if(main.default_LANG == main.SPANISH_LANG):
+   if(default_LANG == main.SPANISH_LANG):
        config_dict['language'] = 'es'
        city_text=u'🏢'+" Ciudad: "
        hour_text=u'🕰'+" Hora de la medida: "
@@ -32,7 +31,7 @@ def get_weather(city_str):
        wind_speed_text=u'💨'+" Velocidad del viento: "
        precipitation_text=u'☔️'+" Probabilidad precipitación: "
        
-   elif(main.default_LANG == main.ENGLISH_LANG):
+   elif(default_LANG == main.ENGLISH_LANG):
        config_dict['language'] = 'en'
        city_text=u'🏢'+" City: "
        hour_text=u'🕰'+" Measurement time: "
@@ -58,9 +57,9 @@ def get_weather(city_str):
         list_of_locations = reg.locations_for(city_name=list[0] , country=list[1].upper())
         city = list_of_locations[0]
    except:
-       if(main.default_LANG == main.ENGLISH_LANG):
+       if(default_LANG == main.ENGLISH_LANG):
            return "ERROR maybe city is not valid try to rewrite it" 
-       elif(main.default_LANG == main.SPANISH_LANG):
+       elif(default_LANG == main.SPANISH_LANG):
            return "ERROR puede que la ciudad no sea válida prueba a reescribirla"     
    
 
@@ -76,11 +75,14 @@ def get_weather(city_str):
             "smoke":u'🌫',
             "lluvia y nieve":u'🌨',
             "rain and snow":u'🌨',
+            "snow":u'🌨',
+            "nieve":u'🌨',
             "lluvia de gran intensidad":u'🌧 🌧 🌧',
             "heavy intensity rain":u'🌧 🌧 🌧',
             "lluvia ligera": u'🌧',
             "light rain": u'🌧',
             "lluvia moderada": u'🌧 🌧',
+            "chubasco": u'🌧 🌧',
             "moderate rain": u'🌧 🌧',
             "algo de nubes":u'🌤',
             "few clouds":u'🌤',
@@ -95,7 +97,7 @@ def get_weather(city_str):
             "tormenta con lluvia":u'⛈ '
             }
    status_text= str(weather.detailed_status)
-   if(status_text == "rain and snow" and main.default_LANG == main.SPANISH_LANG):
+   if(status_text == "rain and snow" and default_LANG == main.SPANISH_LANG):
         status_text ='lluvia y nieve'+" "+switcher['lluvia y nieve']
    else:
         status_text += " "+switcher[status_text] 
@@ -116,7 +118,7 @@ def get_weather(city_str):
 
         status_text= str(daily_forecast[i].detailed_status)
         
-        if(status_text == "rain and snow" and main.default_LANG == main.SPANISH_LANG):
+        if(status_text == "rain and snow" and default_LANG == main.SPANISH_LANG):
             status_text ='lluvia y nieve'+" "+switcher['lluvia y nieve']
         else:
             status_text += " "+switcher[status_text]
